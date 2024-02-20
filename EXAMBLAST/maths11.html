@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS 11-MATHS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main2">
+        <nav>
+            <img width="65" src="logo.jpg" alt="logo">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="guide.html">GUIDELINES</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+            <button class="toggle-nav" onclick="toggleNav()">&#9776;</button>
+        </nav>
+        <div class="box"></div>
+        <div class="topics">
+            <h1 id="subjectTitle" , style="background-color: rgba(228, 253, 0, 0.636);"></h1>
+
+            <h2>Select Topics which are NOT prepared:</h2>
+            <p><b><input type="checkbox" id="topic1">
+                <label for="topic1">Sets</label><br>
+                <input type="checkbox" id="topic2">
+                <label for="topic2">Relations and Functions</label><br>
+                <input type="checkbox" id="topic3">
+                <label for="topic3">Trigonometric Functions</label><br>
+                <input type="checkbox" id="topic4">
+                <label for="topic4">Principle of Mathematical Induction</label><br>
+                <input type="checkbox" id="topic5">
+                <label for="topic5">Complex Numbers and Quadratic Equations</label><br>
+                <input type="checkbox" id="topic6">
+                <label for="topic6">Linear Inequalities</label><br>
+                <input type="checkbox" id="topic7">
+                <label for="topic7">Permutations and Combinations</label><br>
+                <input type="checkbox" id="topic8">
+                <label for="topic8">Binomial Theorem</label><br>
+                <input type="checkbox" id="topic9">
+                <label for="topic9">Sequences and Series</label><br>
+                <input type="checkbox" id="topic10">
+                <label for="topic10">Straight Lines</label><br>
+                <input type="checkbox" id="topic11">
+                <label for="topic11">Conic Sections 1- Parabola</label><br>
+                <input type="checkbox" id="topic12">
+                <label for="topic12">Conic Sections 2- Ellipse</label><br>
+                <input type="checkbox" id="topic13">
+                <label for="topic13">Conic Sections 3- Hyperbola</label><br>
+                <input type="checkbox" id="topic14">
+                <label for="topic14">Introduction to Three Dimensional Geometry</label><br>
+                <input type="checkbox" id="topic15">
+                <label for="topic15">Limits and Derivatives</label><br>
+                <input type="checkbox" id="topic16">
+                <label for="topic16">Mathematical Reasoning</label><br>
+                <input type="checkbox" id="topic17">
+                <label for="topic17">Statistics</label><br>
+                <input type="checkbox" id="topic18">
+                <label for="topic18">Probability</label><br></b></p>
+
+            <b><button class="classes" onclick="getSelectedTopics()">Find Important Topics</button></b><br><br>
+
+            <div id="selectedTopics" style="background-color: azure;"><b></b></div>
+            <script>
+                var selectedClass = localStorage.getItem('selectedClass');
+                var selectedSubject = localStorage.getItem('selectedSubject');
+
+                document.getElementById('subjectTitle').innerHTML = selectedSubject;
+
+            var topics = [
+            { name: 'Sets', priority: 2 ,link: 'https://www.youtube.com/watch?v=Pw4f5dWwB5k'},
+            { name: 'Relations and Functions', priority: 3 ,link: 'https://youtu.be/4qfNCuFXsYE'},
+            { name: 'Trigonometric Functions', priority: 1 ,link: 'https://youtu.be/__XBcqZl5oQ'},
+            { name: 'Principle of Mathematical Induction', priority: 4 ,link: 'https://youtu.be/nTGv3MNfTwo'},
+            { name: 'Complex Numbers and Quadratic Equations', priority: 8 ,link: 'https://youtu.be/MC_G78p3AJA'},
+            { name: 'Linear Inequalities', priority: 18 ,link: 'https://youtu.be/BVNaeS8T5uQ'},
+            { name: 'Permutations and Combinations', priority: 5 ,link: 'https://youtu.be/lmk1sJo0728'},
+            { name: 'Binomial Theorem', priority: 6 ,link: 'https://youtu.be/eAMCL-mMmcY'},
+            { name: 'Sequences and Series', priority: 7 ,link: 'https://youtu.be/-rgM3Z2zF18'},
+            { name: 'Straight Lines', priority: 9 ,link: 'https://youtu.be/Ah-JjIq2bQk'},
+            { name: 'Conic Sections 1- Parabola', priority: 10 ,link: 'https://youtu.be/LsYvJc56yag'},
+            { name: 'Conic Sections 2- Ellipse', priority: 11 ,link: 'https://youtu.be/8asqPexzYzc'},
+            { name: 'Conic Sections 3- Hyperbola', priority: 12 ,link: 'https://youtu.be/Es6IoDqItuc'},
+            { name: 'Introduction to Three Dimensional Geometry', priority: 13 ,link: 'https://youtu.be/t_ABiQEA4c8'},
+            { name: 'Limits and Derivatives', priority: 17 ,link: 'https://youtu.be/ro5dc7JToA0'},
+            { name: 'Mathematical Reasoning', priority: 14 ,link: 'https://youtu.be/zbxVS7Y5NZc'},
+            { name: 'Statistics', priority: 15 ,link: 'https://youtu.be/fjgu_j2Xvjo'},
+            { name: 'Probability', priority: 16 ,link: 'https://youtu.be/sZSwBOMtChA'}
+        ];
+
+                function getSelectedTopics() {
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    var selectedTopicsDiv = document.getElementById('selectedTopics');
+
+                    selectedTopicsDiv.innerHTML = "<h3><br> Weightage of topic in there priority for exam are : <\h3><br>";
+
+                    var selectedTopics = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var topicName = checkboxes[i].nextElementSibling.innerHTML;
+                            var topic = topics.find(item => item.name === topicName);
+                            selectedTopics.push(topic);
+                        }
+                    }
+
+                    selectedTopics.sort((a, b) => a.priority - b.priority);
+
+                    for (var i = 0; i < selectedTopics.length; i++) {
+                        var topicName = selectedTopics[i].name;
+                        var topicLink = selectedTopics[i].link;
+
+                        selectedTopicsDiv.innerHTML += topicName + " ";
+                        if (topicLink) {
+                            selectedTopicsDiv.innerHTML += "<button onclick=\"window.open('" + topicLink + "')\">▶ one-sort lecture</button>";
+                        }
+                        selectedTopicsDiv.innerHTML += "<br><br>";
+                    }
+                }
+            </script>
+        </div>
+        </div>
+
+    <footer>
+        <div class="footer-item">
+            <h2> CLASSES: </h2>
+            <a href="class11.html">CLASS 11</a>
+            <a href="class12.html">CLASS 12</a>
+        </div>
+        <div class="footer-item">
+            <h2>SUBJECTS:</h2>
+            <a href="index.html">PHYSICS</a>
+            <a href="index.html">CHEMISTRY</a>
+            <a href="index.html">MATHS</a>
+            <a href="index.html">BIOLOGY</a>
+        </div>
+        <div class="footer-item">
+            <h2>EXAMS: </h2>
+            <a href="https://www.cbse.gov.in/" target="_blank">BOARDS</a>
+            <a href="https://nta.ac.in/" target="_blank">NEET</a>
+            <a href="https://www.nta.ac.in/Engineeringexam" target="_blank">JEE-MAIN</a>
+            <a href="https://www.comedk.org/" target="_blank">COMEDK</a>
+            <a href="https://cetonline.karnataka.gov.in/kea/" target="">KCET</a>
+        </div>
+        <div class="footer-item">
+            <h2>REACH US:</h2>
+            <a href="https://www.instagram.com/abhi_yadav_1109/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/in/abhishek-yadav-741769279" target="_blank">LINKED-IN</a>
+            <a href="https://www.facebook.com/profile.php?id=100028316178050" target="_blank">FACEBOOK</a>
+            <a href="https://github.com/Abhishek-Yadav1109" target="_blank">GITHUB</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var ul = document.querySelector('nav ul');
+            ul.style.display = ul.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>

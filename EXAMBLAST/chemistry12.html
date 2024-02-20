@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS 12- CHEMISTRY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main2">
+        <nav>
+            <img width="65" src="logo.jpg" alt="logo">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="guide.html">GUIDELINES</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+            <button class="toggle-nav" onclick="toggleNav()">&#9776;</button>
+        </nav>
+        <div class="box"></div>
+        <div class="topics">
+            <h1 id="subjectTitle" , style="background-color: rgba(228, 253, 0, 0.636);"></h1>
+
+            <h2>Select Topics which are NOT prepared:</h2>
+            <p><b><input type="checkbox" id="topic1">
+                <label for="topic1">The Solid State</label><br>
+                <input type="checkbox" id="topic2">
+                <label for="topic2">Solutions</label><br>
+                <input type="checkbox" id="topic3">
+                <label for="topic3">Electrochemistry</label><br>
+                <input type="checkbox" id="topic4">
+                <label for="topic4">Chemical Kinetics</label><br>
+                <input type="checkbox" id="topic5">
+                <label for="topic5">Surface Chemistry</label><br>
+                <input type="checkbox" id="topic6">
+                <label for="topic6">General Principles and Processes of Isolation of Elements</label><br>
+                <input type="checkbox" id="topic7">
+                <label for="topic7">The p-Block Elements</label><br>
+                <input type="checkbox" id="topic8">
+                <label for="topic8">The d and f Block Elements</label><br>
+                <input type="checkbox" id="topic9">
+                <label for="topic9">Coordination Compounds</label><br>
+                <input type="checkbox" id="topic10">
+                <label for="topic10">Haloalkanes and Haloarenes</label><br>
+                <input type="checkbox" id="topic11">
+                <label for="topic11">Alcohols, Phenols and Ethers</label><br>
+                <input type="checkbox" id="topic12">
+                <label for="topic12">Aldehydes, Ketones and Carboxylic Acids</label><br>
+                <input type="checkbox" id="topic13">
+                <label for="topic13">Amines</label><br>
+                <input type="checkbox" id="topic14">
+                <label for="topic14">Biomolecules</label><br>
+                <input type="checkbox" id="topic15">
+                <label for="topic15">Polymers</label><br>
+                <input type="checkbox" id="topic16">
+                <label for="topic16">Chemistry in Everyday life</label><br></b></p>
+
+            <b><button class="classes" onclick="getSelectedTopics()">Find Important Topics</button></b><br><br>
+
+            <div id="selectedTopics" style="background-color: azure;"><b></b></div>
+            <script>
+                var selectedClass = localStorage.getItem('selectedClass');
+                var selectedSubject = localStorage.getItem('selectedSubject');
+
+                document.getElementById('subjectTitle').innerHTML = selectedSubject;
+
+                var topics = [
+            { name: 'The Solid State', priority: 1 , link:'https://youtu.be/gn47OidxofU' },
+            { name: 'Solutions', priority: 2 , link:'https://youtu.be/7OgjB4kEF78' },
+            { name: 'Electrochemistry', priority: 3 , link:'https://youtu.be/scaIpucfWC8' },
+            { name: 'Chemical Kinetics', priority: 4 , link:'https://youtu.be/nUUxrBKY2Lo' },
+            { name: 'Surface Chemistry', priority: 16 , link:'https://youtu.be/rqmXWk4BI2s' },
+            { name: 'General Principles and Processes of Isolation of Elements', priority: 7 , link:'https://youtu.be/j4k0CIrN4Cg' },
+            { name: 'The p-Block Elements', priority: 5 , link:'https://youtu.be/o43m5jMUzHY' },
+            { name: 'The d and f Block Elements', priority: 6 , link:'https://youtu.be/rxAAHMl34yQ' },
+            { name: 'Coordination Compounds', priority: 8 , link:'https://youtu.be/oZrGCmFxp_4' },
+            { name: 'Haloalkanes and Haloarenes', priority: 11 , link:'https://youtu.be/f60_t_M0Sd8' },
+            { name: 'Alcohols, Phenols and Ethers', priority: 9 , link:'https://youtu.be/XXI_Dgzwos4' },
+            { name: 'Aldehydes, Ketones and Carboxylic Acids', priority: 10 , link:'https://youtu.be/l0H4aj1FAxY' },
+            { name: 'Amines', priority: 12 , link:'https://youtu.be/b2i7KbmmLOY?list=PLgxXmqf-q_1aqMaSfbq2w-eeZR-Av8yvg' },
+            { name: 'Biomolecules', priority: 13 , link:'https://youtu.be/60Nnj9xkUi8' },
+            { name: 'Polymers', priority: 14 , link:'https://youtu.be/nXrkiJMfXhw' },
+            { name: 'Chemistry in Everyday life', priority: 15 , link:'https://youtu.be/mAsKhrDsQ_g' }
+        ];
+
+                function getSelectedTopics() {
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    var selectedTopicsDiv = document.getElementById('selectedTopics');
+
+                    selectedTopicsDiv.innerHTML = "<h3><br> Weightage of topic in there priority for exam are : <\h3><br>";
+
+                    var selectedTopics = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var topicName = checkboxes[i].nextElementSibling.innerHTML;
+                            var topic = topics.find(item => item.name === topicName);
+                            selectedTopics.push(topic);
+                        }
+                    }
+
+                    selectedTopics.sort((a, b) => a.priority - b.priority);
+
+                    for (var i = 0; i < selectedTopics.length; i++) {
+                        var topicName = selectedTopics[i].name;
+                        var topicLink = selectedTopics[i].link;
+
+                        selectedTopicsDiv.innerHTML += topicName + " ";
+                        if (topicLink) {
+                            selectedTopicsDiv.innerHTML += "<button onclick=\"window.open('" + topicLink + "')\">▶ one-sort lecture</button>";
+                        }
+                        selectedTopicsDiv.innerHTML += "<br><br>";
+                    }
+                }
+            </script>
+        </div>
+        </div>
+
+    <footer>
+        <div class="footer-item">
+            <h2> CLASSES: </h2>
+            <a href="class11.html">CLASS 11</a>
+            <a href="class12.html">CLASS 12</a>
+        </div>
+        <div class="footer-item">
+            <h2>SUBJECTS:</h2>
+            <a href="index.html">PHYSICS</a>
+            <a href="index.html">CHEMISTRY</a>
+            <a href="index.html">MATHS</a>
+            <a href="index.html">BIOLOGY</a>
+        </div>
+        <div class="footer-item">
+            <h2>EXAMS: </h2>
+            <a href="https://www.cbse.gov.in/" target="_blank">BOARDS</a>
+            <a href="https://nta.ac.in/" target="_blank">NEET</a>
+            <a href="https://www.nta.ac.in/Engineeringexam" target="_blank">JEE-MAIN</a>
+            <a href="https://www.comedk.org/" target="_blank">COMEDK</a>
+            <a href="https://cetonline.karnataka.gov.in/kea/" target="">KCET</a>
+        </div>
+        <div class="footer-item">
+            <h2>REACH US:</h2>
+            <a href="https://www.instagram.com/abhi_yadav_1109/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/in/abhishek-yadav-741769279" target="_blank">LINKED-IN</a>
+            <a href="https://www.facebook.com/profile.php?id=100028316178050" target="_blank">FACEBOOK</a>
+            <a href="https://github.com/Abhishek-Yadav1109" target="_blank">GITHUB</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var ul = document.querySelector('nav ul');
+            ul.style.display = ul.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>

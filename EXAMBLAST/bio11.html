@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS 11- BOLOGY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main2">
+        <nav>
+            <img width="65" src="logo.jpg" alt="logo">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="guide.html">GUIDELINES</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+            <button class="toggle-nav" onclick="toggleNav()">&#9776;</button>
+        </nav>
+        <div class="box"></div>
+        <div class="topics">
+            <h1 id="subjectTitle" , style="background-color: rgba(228, 253, 0, 0.636);"></h1>
+
+            <h2>Select Topics which are NOT prepared:</h2>
+            <p><b><input type="checkbox" id="topic1">
+                <label for="topic1">The Living World</label><br>
+                <input type="checkbox" id="topic2">
+                <label for="topic2">Biological Classification</label><br>
+                <input type="checkbox" id="topic3">
+                <label for="topic3">Plant Kingdom</label><br>
+                <input type="checkbox" id="topic4">
+                <label for="topic4">Animal Kingdom</label><br>
+                <input type="checkbox" id="topic5">
+                <label for="topic5">Morphology of Flowering Plants</label><br>
+                <input type="checkbox" id="topic6">
+                <label for="topic6">Anatomy of Flowering Plants</label><br>
+                <input type="checkbox" id="topic7">
+                <label for="topic7">Structural Organisation in Animals</label><br>
+                <input type="checkbox" id="topic8">
+                <label for="topic8">Cell: The Unit of Life</label><br>
+                <input type="checkbox" id="topic9">
+                <label for="topic9">Biomolecules</label><br>
+                <input type="checkbox" id="topic10">
+                <label for="topic10">Cell Cycle and Cell Division</label><br>
+                <input type="checkbox" id="topic11">
+                <label for="topic11">Transport in Plants</label><br>
+                <input type="checkbox" id="topic12">
+                <label for="topic12">Mineral Nutrition</label><br>
+                <input type="checkbox" id="topic13">
+                <label for="topic13">Photosynthesis in Higher Plants</label><br>
+                <input type="checkbox" id="topic14">
+                <label for="topic14">Respiration in Plants</label><br>
+                <input type="checkbox" id="topic15">
+                <label for="topic15">Plant Growth and Development</label><br>
+                <input type="checkbox" id="topic16">
+                <label for="topic16">Digestion and Absorption</label><br>
+                <input type="checkbox" id="topic17">
+                <label for="topic17">Breathing and Exchange of Gases</label><br>
+                <input type="checkbox" id="topic18">
+                <label for="topic18">Body Fluids and Circulation</label><br>
+                <input type="checkbox" id="topic19">
+                <label for="topic19">Excretory Products and their Elimination</label><br>
+                <input type="checkbox" id="topic20">
+                <label for="topic20">Locomotion and Movement</label><br>
+                <input type="checkbox" id="topic21">
+                <label for="topic21">Neural Control and Coordination</label><br>
+                <input type="checkbox" id="topic22">
+                <label for="topic22">Chemical Coordination and Integration</label><br></b></p>
+
+            <b><button class="classes" onclick="getSelectedTopics()">Find Important Topics</button></b><br><br>
+
+            <div id="selectedTopics" style="background-color: azure;"><b></b></div>
+            <script>
+                var selectedClass = localStorage.getItem('selectedClass');
+                var selectedSubject = localStorage.getItem('selectedSubject');
+
+                document.getElementById('subjectTitle').innerHTML = selectedSubject;
+
+                var topics = [
+                { name: 'The Living World', priority: 18 , link: 'https://youtu.be/GDSZ-h05Wt0'},
+                { name: 'Biological Classification', priority: 2 , link: 'https://youtu.be/SbpuctXuszw'},
+                { name: 'Plant Kingdom', priority: 3 , link: 'https://youtu.be/M3fkEv7fwcY'},
+                { name: 'Animal Kingdom', priority: 4 , link: 'https://youtu.be/ffKwUqHkf6k'},
+                { name: 'Morphology of Flowering Plants', priority: 5 , link: 'https://youtu.be/5Ifpngt4T3k'},
+                { name: 'Anatomy of Flowering Plants', priority: 6 , link: 'https://youtu.be/aKF8AoceJOQ'},
+                { name: 'Structural Organisation in Animals', priority: 22 , link: 'https://youtu.be/zCH1Sc-rixg'},
+                { name: 'Cell: The Unit of Life', priority: 1 , link: 'https://youtu.be/zBeJ6vDgRGM'},
+                { name: 'Biomolecules', priority: 20 , link: 'https://youtu.be/cy1c2870vYk'},
+                { name: 'Cell Cycle and Cell Division', priority: 10 , link: 'https://youtu.be/I_4exsfkO68'},
+                { name: 'Transport in Plants', priority: 9 , link: 'https://youtu.be/RzdywxrDKBM'},
+                { name: 'Mineral Nutrition', priority: 21 , link: 'https://youtu.be/3KQKwYl3gUk'},
+                { name: 'Photosynthesis in Higher Plants', priority: 7 , link: 'https://youtu.be/VbB5lyXvI7E'},
+                { name: 'Respiration in Plants', priority: 8 , link: 'https://youtu.be/lfqYk0wu058'},
+                { name: 'Plant Growth and Development', priority: 19 , link: 'https://youtu.be/am1fLJCVcjw'},
+                { name: 'Digestion and Absorption', priority: 11 , link: 'https://youtu.be/R07g6aFnnlo'},
+                { name: 'Breathing and Exchange of Gases', priority: 12 , link: 'https://youtu.be/M0wow3LiMo8'},
+                { name: 'Body Fluids and Circulation' , priority: 14 , link: 'https://youtu.be/XUpxRa1npXw'},
+                { name: 'Excretory Products and their Elimination', priority: 13 , link: 'https://youtu.be/wYMZn5ZZeHQ'},
+                { name: 'Locomotion and Movement', priority: 16 , link: 'https://youtu.be/GnORBwbpJqc'},
+                { name: 'Neural Control and Coordination', priority: 15 , link: 'https://youtu.be/xiIA_BqN0Ao'},
+                { name: 'Chemical Coordination and Integration', priority: 17 , link: 'https://youtu.be/Lfv4VvLYc0k'}
+            ];
+
+                function getSelectedTopics() {
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    var selectedTopicsDiv = document.getElementById('selectedTopics');
+
+                    selectedTopicsDiv.innerHTML = "<h3><br> Weightage of topic in there priority for exam are : <\h3><br>";
+
+                    var selectedTopics = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var topicName = checkboxes[i].nextElementSibling.innerHTML;
+                            var topic = topics.find(item => item.name === topicName);
+                            selectedTopics.push(topic);
+                        }
+                    }
+
+                    selectedTopics.sort((a, b) => a.priority - b.priority);
+
+                    for (var i = 0; i < selectedTopics.length; i++) {
+                        var topicName = selectedTopics[i].name;
+                        var topicLink = selectedTopics[i].link;
+
+                        selectedTopicsDiv.innerHTML += topicName + " ";
+                        if (topicLink) {
+                            selectedTopicsDiv.innerHTML += "<button onclick=\"window.open('" + topicLink + "')\">▶ one-sort lecture</button>";
+                        }
+                        selectedTopicsDiv.innerHTML += "<br><br>";
+                    }
+                }
+            </script>
+        </div>
+        </div>
+
+    <footer>
+        <div class="footer-item">
+            <h2> CLASSES: </h2>
+            <a href="class11.html">CLASS 11</a>
+            <a href="class12.html">CLASS 12</a>
+        </div>
+        <div class="footer-item">
+            <h2>SUBJECTS:</h2>
+            <a href="index.html">PHYSICS</a>
+            <a href="index.html">CHEMISTRY</a>
+            <a href="index.html">MATHS</a>
+            <a href="index.html">BIOLOGY</a>
+        </div>
+        <div class="footer-item">
+            <h2>EXAMS: </h2>
+            <a href="https://www.cbse.gov.in/" target="_blank">BOARDS</a>
+            <a href="https://nta.ac.in/" target="_blank">NEET</a>
+            <a href="https://www.nta.ac.in/Engineeringexam" target="_blank">JEE-MAIN</a>
+            <a href="https://www.comedk.org/" target="_blank">COMEDK</a>
+            <a href="https://cetonline.karnataka.gov.in/kea/" target="">KCET</a>
+        </div>
+        <div class="footer-item">
+            <h2>REACH US:</h2>
+            <a href="https://www.instagram.com/abhi_yadav_1109/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/in/abhishek-yadav-741769279" target="_blank">LINKED-IN</a>
+            <a href="https://www.facebook.com/profile.php?id=100028316178050" target="_blank">FACEBOOK</a>
+            <a href="https://github.com/Abhishek-Yadav1109" target="_blank">GITHUB</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var ul = document.querySelector('nav ul');
+            ul.style.display = ul.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>

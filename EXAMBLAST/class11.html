@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS 11- SELECT SUBJECT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <nav>
+            <img width="65" src="logo.jpg" alt="logo">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="guide.html">GUIDELINES</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+            <button class="toggle-nav" onclick="toggleNav()">&#9776;</button>
+        </nav>
+        <div class="box"></div>
+        <div class="select">
+            <h1 class="sel">SELECT YOUR SUBJECT :</h1>
+            <a href="maths11.html"><button class="classes">  MATHS  </button></a>
+            <a href="physics11.html"><button class="classes"> PHYSICS </button></a>
+            <a href="chemistry11.html"><button class="classes">CHEMISTRY</button></a>
+            <a href="bio11.html"><button class="classes"> BIOLOGY</button></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-item">
+            <h2> CLASSES: </h2>
+            <a href="class11.html">CLASS 11</a>
+            <a href="class12.html">CLASS 12</a>
+        </div>
+        <div class="footer-item">
+            <h2>SUBJECTS:</h2>
+            <a href="index.html">PHYSICS</a>
+            <a href="index.html">CHEMISTRY</a>
+            <a href="index.html">MATHS</a>
+            <a href="index.html">BIOLOGY</a>
+        </div>
+        <div class="footer-item">
+            <h2>EXAMS: </h2>
+            <a href="https://www.cbse.gov.in/" target="_blank">BOARDS</a>
+            <a href="https://nta.ac.in/" target="_blank">NEET</a>
+            <a href="https://www.nta.ac.in/Engineeringexam" target="_blank">JEE-MAIN</a>
+            <a href="https://www.comedk.org/" target="_blank">COMEDK</a>
+            <a href="https://cetonline.karnataka.gov.in/kea/" target="">KCET</a>
+        </div>
+        <div class="footer-item">
+            <h2>REACH US:</h2>
+            <a href="https://www.instagram.com/abhi_yadav_1109/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/in/abhishek-yadav-741769279" target="_blank">LINKED-IN</a>
+            <a href="https://www.facebook.com/profile.php?id=100028316178050" target="_blank">FACEBOOK</a>
+            <a href="https://github.com/Abhishek-Yadav1109" target="_blank">GITHUB</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var ul = document.querySelector('nav ul');
+            ul.style.display = ul.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>

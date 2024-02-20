@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASS 12- BIOLOGY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main2">
+        <nav>
+            <img width="65" src="logo.jpg" alt="logo">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="guide.html">GUIDELINES</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+            <button class="toggle-nav" onclick="toggleNav()">&#9776;</button>
+        </nav>
+        <div class="box"></div>
+        <div class="topics">
+            <h1 id="subjectTitle" , style="background-color: rgba(228, 253, 0, 0.636);"></h1>
+
+            <h2>Select Topics which are NOT prepared:</h2>
+            <p><b><input type="checkbox" id="topic1">
+                <label for="topic1">Reproduction in Organism</label><br>
+                <input type="checkbox" id="topic2">
+                <label for="topic2">Sexual Reproduction in Flowering Plants</label><br>
+                <input type="checkbox" id="topic3">
+                <label for="topic3">Human Reproduction</label><br>
+                <input type="checkbox" id="topic4">
+                <label for="topic4">Reproductive Health</label><br>
+                <input type="checkbox" id="topic5">
+                <label for="topic5">Principles of Inheritance and Variation</label><br>
+                <input type="checkbox" id="topic6">
+                <label for="topic6">Molecular Basis of Inheritance</label><br>
+                <input type="checkbox" id="topic7">
+                <label for="topic7">Evolution</label><br>
+                <input type="checkbox" id="topic8">
+                <label for="topic8">Human Health and Disease</label><br>
+                <input type="checkbox" id="topic9">
+                <label for="topic9">Strategies for Enhancement in Food Production</label><br>
+                <input type="checkbox" id="topic10">
+                <label for="topic10">Microbes in Human Welfare</label><br>
+                <input type="checkbox" id="topic11">
+                <label for="topic11">Biotechnology: Principles and Processes</label><br>
+                <input type="checkbox" id="topic12">
+                <label for="topic12">Biotechnology and its Applications</label><br>
+                <input type="checkbox" id="topic13">
+                <label for="topic13">Organisms and Populations</label><br>
+                <input type="checkbox" id="topic14">
+                <label for="topic14">Ecosystem</label><br>
+                <input type="checkbox" id="topic15">
+                <label for="topic15">Biodiversity and Conservation</label><br>
+                <input type="checkbox" id="topic16">
+                <label for="topic16">Environmental Issues</label><br></b></p>
+
+            <b><button class="classes" onclick="getSelectedTopics()">Find Important Topics</button></b><br><br>
+
+            <div id="selectedTopics" style="background-color: azure;"><b></b></div>
+            <script>
+                var selectedClass = localStorage.getItem('selectedClass');
+                var selectedSubject = localStorage.getItem('selectedSubject');
+
+                document.getElementById('subjectTitle').innerHTML = selectedSubject;
+
+                var topics = [
+            { name: 'Reproduction in Organism', priority: 1 ,link: 'https://youtu.be/pTOz53nq6GU'},
+            { name: 'Sexual Reproduction in Flowering Plants', priority: 2 ,link: 'https://youtu.be/J8U0B6n8Y98'},
+            { name: 'Human Reproduction', priority: 5 ,link: 'https://youtu.be/jCdbC2J2LUw'},
+            { name: 'Reproductive Health', priority: 16 ,link: 'https://youtu.be/0HiZSpX9EcI'},
+            { name: 'Principles of Inheritance and Variation', priority: 3 ,link: 'https://youtu.be/4Vj1jYJaKhg'},
+            { name: 'Molecular Basis of Inheritance', priority: 4 ,link: 'https://youtu.be/Cg_wlnP6p48'},
+            { name: 'Evolution', priority: 6 ,link: 'https://youtu.be/Wrfgr-jU0P4'},
+            { name: 'Human Health and Disease', priority: 7 ,link: 'https://youtu.be/tcMX5PDlkHM'},
+            { name: 'Strategies for Enhancement in Food Production', priority: 14 ,link: 'https://youtu.be/6KZ_cxM3t8o'},
+            { name: 'Microbes in Human Welfare', priority: 15 ,link: 'https://youtu.be/vFcWvEL6b60'},
+            { name: 'Biotechnology: Principles and Processes', priority: 8 ,link: 'https://youtu.be/yYhm6kXf1eY'},
+            { name: 'Biotechnology and its Applications', priority: 9 ,link: 'https://youtu.be/z5v8YWFlc5U'},
+            { name: 'Organisms and Populations', priority: 11 ,link: 'https://youtu.be/7ZGnNDw3Gd0'},
+            { name: 'Ecosystem', priority: 10 ,link: 'https://youtu.be/Cfy8SMyYjGA'},
+            { name: 'Biodiversity and Conservation', priority: 12 ,link: 'https://youtu.be/qeBpDK-SJDY'},
+            { name: 'Environmental Issues', priority: 13 ,link: 'https://youtu.be/S2Zzg7APjOI'}
+        ];
+
+                function getSelectedTopics() {
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    var selectedTopicsDiv = document.getElementById('selectedTopics');
+
+                    selectedTopicsDiv.innerHTML = "<h3><br> Weightage of topic in there priority for exam are : <\h3><br>";
+
+                    var selectedTopics = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var topicName = checkboxes[i].nextElementSibling.innerHTML;
+                            var topic = topics.find(item => item.name === topicName);
+                            selectedTopics.push(topic);
+                        }
+                    }
+
+                    selectedTopics.sort((a, b) => a.priority - b.priority);
+
+                    for (var i = 0; i < selectedTopics.length; i++) {
+                        var topicName = selectedTopics[i].name;
+                        var topicLink = selectedTopics[i].link;
+
+                        selectedTopicsDiv.innerHTML += topicName + " ";
+                        if (topicLink) {
+                            selectedTopicsDiv.innerHTML += "<button onclick=\"window.open('" + topicLink + "')\">▶ one-sort lecture</button>";
+                        }
+                        selectedTopicsDiv.innerHTML += "<br><br>";
+                    }
+                }
+            </script>
+        </div>
+        </div>
+
+    <footer>
+        <div class="footer-item">
+            <h2> CLASSES: </h2>
+            <a href="class11.html">CLASS 11</a>
+            <a href="class12.html">CLASS 12</a>
+        </div>
+        <div class="footer-item">
+            <h2>SUBJECTS:</h2>
+            <a href="index.html">PHYSICS</a>
+            <a href="index.html">CHEMISTRY</a>
+            <a href="index.html">MATHS</a>
+            <a href="index.html">BIOLOGY</a>
+        </div>
+        <div class="footer-item">
+            <h2>EXAMS: </h2>
+            <a href="https://www.cbse.gov.in/" target="_blank">BOARDS</a>
+            <a href="https://nta.ac.in/" target="_blank">NEET</a>
+            <a href="https://www.nta.ac.in/Engineeringexam" target="_blank">JEE-MAIN</a>
+            <a href="https://www.comedk.org/" target="_blank">COMEDK</a>
+            <a href="https://cetonline.karnataka.gov.in/kea/" target="">KCET</a>
+        </div>
+        <div class="footer-item">
+            <h2>REACH US:</h2>
+            <a href="https://www.instagram.com/abhi_yadav_1109/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/in/abhishek-yadav-741769279" target="_blank">LINKED-IN</a>
+            <a href="https://www.facebook.com/profile.php?id=100028316178050" target="_blank">FACEBOOK</a>
+            <a href="https://github.com/Abhishek-Yadav1109" target="_blank">GITHUB</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var ul = document.querySelector('nav ul');
+            ul.style.display = ul.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>
